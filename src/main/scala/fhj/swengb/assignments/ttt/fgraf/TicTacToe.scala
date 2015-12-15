@@ -170,6 +170,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     */
   val gameOver: Boolean = {
     if (moveHistory.size >= 9 || winner != None) {
+    //if (remainingMoves.size == 0 || winner != None) {
       true
     } else {
       false
