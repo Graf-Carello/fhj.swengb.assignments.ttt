@@ -16,7 +16,7 @@ import scala.util.control.NonFatal
 
 object TicTacToeApp {
 
-  def main (args: Array[String]) {
+  def main(args: Array[String]) {
     Application.launch(classOf[TicTacToeApp], args: _*)
   }
 }
@@ -27,7 +27,7 @@ class TicTacToeApp extends javafx.application.Application {
   val cssFile = "/fhj/swengb/assignments/ttt/TicTacToeStylesheet.css"
 
 
-  def mkFxmlLoader(fxml:String):FXMLLoader = {
+  def mkFxmlLoader(fxml: String): FXMLLoader = {
     new FXMLLoader(getClass.getResource(fxml))
   }
 
@@ -68,21 +68,50 @@ class TicTacToeAppController extends Initializable {
   @FXML var bt8: Button = _
   @FXML var bt9: Button = _
   @FXML var start1vs1: Button = _
+  @FXML var againstPc: Button = _
   @FXML var reset: Button = _
+  @FXML var exit: Button = _
 
+  def whichPlayer(): String = {
+    var playerString: String = ""
+    if (TicTacToe.apply().nextPlayer == PlayerA.toString) {
+    //if (TicTacToe.apply.madeMoves.head == PlayerA.toString) {
+      playerString = "X"
+    } else {
+      playerString = "O"
+    }
 
+    playerString
+  }
 
-  def field1Clicked():Unit = bt1.setText("X")
-  def field2Clicked():Unit = bt2.setText("X")
-  def field3Clicked():Unit = bt3.setText("X")
-  def field4Clicked():Unit = bt4.setText("X")
-  def field5Clicked():Unit = bt5.setText("X")
-  def field6Clicked():Unit = bt6.setText("X")
-  def field7Clicked():Unit = bt7.setText("X")
-  def field8Clicked():Unit = bt8.setText("X")
-  def field9Clicked():Unit = bt9.setText("X")
-  def resetclick():Unit = ???;
-  def play1vs1():Unit = ???;
+  def field1Clicked(): Unit = bt1.setText(whichPlayer().toString)
+
+  //def field1Clicked():Unit = bt1.setText("X")
+  def field2Clicked(): Unit = bt2.setText("X")
+
+  def field3Clicked(): Unit = bt3.setText("X")
+
+  def field4Clicked(): Unit = bt4.setText("X")
+
+  def field5Clicked(): Unit = bt5.setText("X")
+
+  def field6Clicked(): Unit = bt6.setText("X")
+
+  def field7Clicked(): Unit = bt7.setText("X")
+
+  def field8Clicked(): Unit = bt8.setText("X")
+
+  def field9Clicked(): Unit = bt9.setText("X")
+
+  def resetclick(): Unit = {
+    bt1.setText("Button"); bt2.setText("Button"); bt3.setText("Button"); bt4.setText("Button"); bt5.setText("Button"); bt6.setText("Button"); bt7.setText("Button"); bt8.setText("Button"); bt9.setText("Button");
+  }
+
+  def play1vs1(): Unit = ???;
+
+  def play1vsPc(): Unit = ???;
+
+  def exitclick(): Unit = System.exit(1);
 
 
 }
