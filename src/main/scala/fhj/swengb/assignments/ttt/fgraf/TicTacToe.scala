@@ -2,6 +2,7 @@ package fhj.swengb.assignments.ttt.fgraf
 
 import scala.collection.Set
 import scala.util.Random
+import scala.collection.Set
 
 /**
   * models the different moves the game allows
@@ -170,7 +171,6 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     */
   val gameOver: Boolean = {
     if (moveHistory.size >= 9 || winner != None) {
-    //if (remainingMoves.size == 0 || winner != None) {
       true
     } else {
       false
@@ -183,15 +183,11 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * the moves which are still to be played on this tic tac toe.
     */
   val remainingMoves: Set[TMove] = {
-    val allMoves = Seq[TMove](TopLeft, TopCenter, TopRight, MiddleCenter, MiddleLeft, MiddleRight, BottomCenter, BottomLeft, BottomRight)
-    //allMoves.filter(!madeMoves.contains(_)).toSet
-    //(allMoves filterNot madeMoves.contains).toSet
     allMoves.filter(!moveHistory.map(_._1).toSet.contains(_)).toSet
 
   }
 
   def remainingMovesSimulated(executedMoves: Map[TMove, Player]): Set[TMove] = {
-    //allMoves.filter(!madeMoves.contains(_)).toSet
     (allMoves filterNot executedMoves.map(_._1).toSet.contains).toSet
 
   }
@@ -215,34 +211,36 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * The set of moves contains all moves which contributed to the result.
     */
 
-  def checkIfWon(moves: Seq[TMove]): Boolean = {
+  def checkIfWon(moves: Set[TMove]): Boolean = {
 
-    if ((Seq(TopLeft, TopCenter, TopRight).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(MiddleLeft, MiddleCenter, MiddleRight).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(BottomLeft, BottomCenter, BottomRight).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(TopLeft, MiddleLeft, BottomLeft).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(TopCenter, MiddleCenter, BottomCenter).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(TopRight, MiddleRight, BottomRight).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(TopLeft, MiddleCenter, BottomRight).filter(x => moves.contains(x)).length == 0) ||
-      (Seq(TopRight, MiddleCenter, TopRight).filter(x => moves.contains(x)).length == 0)) {
+    val topRow:Set[TMove] = Set(TopLeft, TopCenter, TopRight)
+    val middleRow:Set[TMove] = Set(MiddleLeft, MiddleCenter, MiddleRight)
+    val bottomRow:Set[TMove] = Set(BottomLeft, BottomCenter, BottomRight)
+    val leftColumn:Set[TMove] = Set(TopLeft, MiddleLeft, BottomLeft)
+    val middleColumn:Set[TMove] = Set(TopCenter, MiddleCenter, BottomCenter)
+    val rightColumn:Set[TMove] = Set(TopRight, MiddleRight, BottomRight)
+    val leftDiagonal:Set[TMove] = Set(TopLeft, MiddleCenter, BottomRight)
+    val rightDiagonal:Set[TMove] = Set(TopRight, MiddleCenter, BottomLeft)
+
+
+    if(topRow.diff(moves).isEmpty || middleRow.diff(moves).isEmpty|| bottomRow.diff(moves).isEmpty ||
+      leftColumn.diff(moves).isEmpty || middleColumn.diff(moves).isEmpty || rightColumn.diff(moves).isEmpty ||
+      leftDiagonal.diff(moves).isEmpty || rightDiagonal.diff(moves).isEmpty) {
       true
     } else {
       false
     }
-
   }
+
 
 
   def winner: Option[(Player, Set[TMove])] = {
 
-    //None
-    //Some(PlayerA, Set(MiddleCenter))
-    //Some(PlayerA, Set(MiddleCenter))
     val movesPlayerA = moveHistory.filter(_ == PlayerA);
     val movesPlayerB = moveHistory.filter(_ == PlayerB);
-    if (checkIfWon(movesPlayerA.map(_._1).toSeq)) {
+    if (checkIfWon(movesPlayerA.map(_._1).toSet)) {
       Some(PlayerA, movesPlayerA.map(_._1).toSet)
-    } else if (checkIfWon(movesPlayerB.map(_._1).toSeq)) {
+    } else if (checkIfWon(movesPlayerB.map(_._1).toSet)) {
       Some(PlayerB, movesPlayerB.map(_._1).toSet)
     } else {
       None
