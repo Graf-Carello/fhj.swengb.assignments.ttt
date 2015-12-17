@@ -2,7 +2,6 @@ package fhj.swengb.assignments.ttt.fgraf
 
 import scala.collection.Set
 import scala.util.Random
-import scala.collection.Set
 
 /**
   * models the different moves the game allows
@@ -169,14 +168,11 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     *
     * The game is over if either of a player wins or there is a draw.
     */
-  val gameOver: Boolean = {
-    if (moveHistory.size >= 9 || winner != None) {
-      true
-    } else {
+  val gameOver: Boolean =
+    if (winner == None)
       false
-    }
-
-  }
+    else
+      true
 
 
   /**
@@ -213,25 +209,24 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
 
   def checkIfWon(moves: Set[TMove]): Boolean = {
 
-    val topRow:Set[TMove] = Set(TopLeft, TopCenter, TopRight)
-    val middleRow:Set[TMove] = Set(MiddleLeft, MiddleCenter, MiddleRight)
-    val bottomRow:Set[TMove] = Set(BottomLeft, BottomCenter, BottomRight)
-    val leftColumn:Set[TMove] = Set(TopLeft, MiddleLeft, BottomLeft)
-    val middleColumn:Set[TMove] = Set(TopCenter, MiddleCenter, BottomCenter)
-    val rightColumn:Set[TMove] = Set(TopRight, MiddleRight, BottomRight)
-    val leftDiagonal:Set[TMove] = Set(TopLeft, MiddleCenter, BottomRight)
-    val rightDiagonal:Set[TMove] = Set(TopRight, MiddleCenter, BottomLeft)
+    val topRow: Set[TMove] = Set(TopLeft, TopCenter, TopRight)
+    val middleRow: Set[TMove] = Set(MiddleLeft, MiddleCenter, MiddleRight)
+    val bottomRow: Set[TMove] = Set(BottomLeft, BottomCenter, BottomRight)
+    val leftColumn: Set[TMove] = Set(TopLeft, MiddleLeft, BottomLeft)
+    val middleColumn: Set[TMove] = Set(TopCenter, MiddleCenter, BottomCenter)
+    val rightColumn: Set[TMove] = Set(TopRight, MiddleRight, BottomRight)
+    val leftDiagonal: Set[TMove] = Set(TopLeft, MiddleCenter, BottomRight)
+    val rightDiagonal: Set[TMove] = Set(TopRight, MiddleCenter, BottomLeft)
 
 
-    if(topRow.diff(moves).isEmpty || middleRow.diff(moves).isEmpty|| bottomRow.diff(moves).isEmpty ||
+    if (topRow.diff(moves).isEmpty || middleRow.diff(moves).isEmpty || bottomRow.diff(moves).isEmpty ||
       leftColumn.diff(moves).isEmpty || middleColumn.diff(moves).isEmpty || rightColumn.diff(moves).isEmpty ||
       leftDiagonal.diff(moves).isEmpty || rightDiagonal.diff(moves).isEmpty) {
-      true
+      true;
     } else {
-      false
+      false;
     }
   }
-
 
 
   def winner: Option[(Player, Set[TMove])] = {
@@ -239,15 +234,16 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     val movesPlayerA = moveHistory.filter(_ == PlayerA);
     val movesPlayerB = moveHistory.filter(_ == PlayerB);
     if (checkIfWon(movesPlayerA.map(_._1).toSet)) {
+      println("PlayerA won!")
       Some(PlayerA, movesPlayerA.map(_._1).toSet)
     } else if (checkIfWon(movesPlayerB.map(_._1).toSet)) {
+      println("PlayerB won!")
       Some(PlayerB, movesPlayerB.map(_._1).toSet)
     } else {
       None
     }
 
   }
-
 
 
   /**

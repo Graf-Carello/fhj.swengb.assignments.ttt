@@ -74,39 +74,48 @@ class TicTacToeAppController extends Initializable {
 
 
   def field1Clicked(): Unit = {
-    val newgame = playMoves(TopLeft, game, bt1); game = newgame
+    val newgame = playMoves(TopLeft, game, bt1);
+    game = newgame
   }
 
   def field2Clicked(): Unit = {
-    val newgame = playMoves(TopCenter, game, bt2); game = newgame
+    val newgame = playMoves(TopCenter, game, bt2);
+    game = newgame
   }
 
   def field3Clicked(): Unit = {
-    val newgame = playMoves(TopRight, game, bt3); game = newgame
+    val newgame = playMoves(TopRight, game, bt3);
+    game = newgame
   }
 
   def field4Clicked(): Unit = {
-    val newgame = playMoves(MiddleLeft, game, bt4); game = newgame
+    val newgame = playMoves(MiddleLeft, game, bt4);
+    game = newgame
   }
 
   def field5Clicked(): Unit = {
-    val newgame = playMoves(MiddleCenter, game, bt5); game = newgame
+    val newgame = playMoves(MiddleCenter, game, bt5);
+    game = newgame
   }
 
   def field6Clicked(): Unit = {
-    val newgame = playMoves(MiddleRight, game, bt6); game = newgame
+    val newgame = playMoves(MiddleRight, game, bt6);
+    game = newgame
   }
 
   def field7Clicked(): Unit = {
-    val newgame = playMoves(BottomLeft, game, bt7); game = newgame
+    val newgame = playMoves(BottomLeft, game, bt7);
+    game = newgame
   }
 
   def field8Clicked(): Unit = {
-    val newgame = playMoves(BottomCenter, game, bt8); game = newgame
+    val newgame = playMoves(BottomCenter, game, bt8);
+    game = newgame
   }
 
   def field9Clicked(): Unit = {
-    val newgame = playMoves(BottomRight, game, bt9); game = newgame
+    val newgame = playMoves(BottomRight, game, bt9);
+    game = newgame
   }
 
 
@@ -118,6 +127,7 @@ class TicTacToeAppController extends Initializable {
       buttonClicked.setText("O")
     else
       buttonClicked.setText("X")
+
 
     val newgame = currentgame.turn(move, currentgame.nextPlayer)
     println(newgame.asString())
