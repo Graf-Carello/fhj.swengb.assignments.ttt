@@ -72,39 +72,69 @@ class TicTacToeAppController extends Initializable {
   @FXML var reset: Button = _
   @FXML var exit: Button = _
 
-  def whichPlayer(): String = {
-    var playerString: String = ""
-    if (TicTacToe.apply().nextPlayer == PlayerA.toString) {
-    //if (TicTacToe.apply.madeMoves.head == PlayerA.toString) {
-      playerString = "X"
-    } else {
-      playerString = "O"
-    }
 
-    playerString
+  def field1Clicked(): Unit = {
+    val newgame = playMoves(TopLeft, game, bt1); game = newgame
   }
 
-  def field1Clicked(): Unit = bt1.setText(whichPlayer().toString)
+  def field2Clicked(): Unit = {
+    val newgame = playMoves(TopCenter, game, bt2); game = newgame
+  }
 
-  //def field1Clicked():Unit = bt1.setText("X")
-  def field2Clicked(): Unit = bt2.setText("X")
+  def field3Clicked(): Unit = {
+    val newgame = playMoves(TopRight, game, bt3); game = newgame
+  }
 
-  def field3Clicked(): Unit = bt3.setText("X")
+  def field4Clicked(): Unit = {
+    val newgame = playMoves(MiddleLeft, game, bt4); game = newgame
+  }
 
-  def field4Clicked(): Unit = bt4.setText("X")
+  def field5Clicked(): Unit = {
+    val newgame = playMoves(MiddleCenter, game, bt5); game = newgame
+  }
 
-  def field5Clicked(): Unit = bt5.setText("X")
+  def field6Clicked(): Unit = {
+    val newgame = playMoves(MiddleRight, game, bt6); game = newgame
+  }
 
-  def field6Clicked(): Unit = bt6.setText("X")
+  def field7Clicked(): Unit = {
+    val newgame = playMoves(BottomLeft, game, bt7); game = newgame
+  }
 
-  def field7Clicked(): Unit = bt7.setText("X")
+  def field8Clicked(): Unit = {
+    val newgame = playMoves(BottomCenter, game, bt8); game = newgame
+  }
 
-  def field8Clicked(): Unit = bt8.setText("X")
+  def field9Clicked(): Unit = {
+    val newgame = playMoves(BottomRight, game, bt9); game = newgame
+  }
 
-  def field9Clicked(): Unit = bt9.setText("X")
+
+  var game = TicTacToe.apply()
+
+  def playMoves(move: TMove, currentgame: TicTacToe = game, buttonClicked: Button): TicTacToe = {
+
+    if (currentgame.nextPlayer.equals(PlayerA))
+      buttonClicked.setText("O")
+    else
+      buttonClicked.setText("X")
+
+    val newgame = currentgame.turn(move, currentgame.nextPlayer)
+    println(newgame.asString())
+    newgame
+  }
 
   def resetclick(): Unit = {
-    bt1.setText("Button"); bt2.setText("Button"); bt3.setText("Button"); bt4.setText("Button"); bt5.setText("Button"); bt6.setText("Button"); bt7.setText("Button"); bt8.setText("Button"); bt9.setText("Button");
+    bt1.setText("Button");
+    bt2.setText("Button");
+    bt3.setText("Button");
+    bt4.setText("Button");
+    bt5.setText("Button");
+    bt6.setText("Button");
+    bt7.setText("Button");
+    bt8.setText("Button");
+    bt9.setText("Button");
+    TicTacToe.apply()
   }
 
   def play1vs1(): Unit = ???;
