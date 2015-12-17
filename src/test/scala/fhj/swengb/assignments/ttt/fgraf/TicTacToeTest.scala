@@ -1,4 +1,4 @@
-package fhj.swengb.assignments.ttt.rladstaetter
+package fhj.swengb.assignments.ttt.fgraf
 
 import org.junit.Assert._
 import org.junit.Test
@@ -20,6 +20,7 @@ class TicTacToeTest {
 
   @Test def testGameOver(): Unit = {
     assertFalse(TicTacToe().gameOver)
+    //assertTrue(TicTacToe().gameOver)
   }
 
   @Test def testGameOver2(): Unit = {

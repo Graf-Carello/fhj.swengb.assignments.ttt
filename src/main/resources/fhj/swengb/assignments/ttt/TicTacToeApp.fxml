@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fhj.swengb.assignments.ttt.fgraf.TicTacToeAppController">
    <center>
       <GridPane prefHeight="82.0" prefWidth="240.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -19,39 +19,71 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#field2Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#field3Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#field4Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.rowIndex="1" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#field5Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#field6Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#field7Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.rowIndex="2" />
-            <Button layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#field8Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#field9Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#field1Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" />
+            <Button fx:id="bt2" mnemonicParsing="false" onAction="#field2Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt3" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#field3Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt4" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#field4Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt5" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#field5Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt6" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#field6Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt7" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#field7Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt8" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#field8Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt9" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#field9Clicked" prefHeight="148.0" prefWidth="215.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="bt1" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#field1Clicked" prefHeight="148.0" prefWidth="215.0" text="Button">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
          </children>
       </GridPane>
    </center>
    <top>
-      <Label prefHeight="43.0" prefWidth="120.0" text="Tic Tac Toe" BorderPane.alignment="CENTER">
+      <Label prefHeight="70.0" prefWidth="241.0" text="Tic Tac Toe" BorderPane.alignment="CENTER">
          <font>
-            <Font size="24.0" />
+            <Font size="48.0" />
          </font>
       </Label>
    </top>
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="122.0" style="-fx-background-color: green; -fx-border-color: white;" text="1 vs 1">
+            <Button fx:id="start1vs1" mnemonicParsing="false" onAction="#play1vs1" prefHeight="69.0" prefWidth="122.0" style="-fx-background-color: green; -fx-border-color: white;" text="1 vs 1">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="116.0" style="-fx-background-color: green; -fx-border-color: white;" text="1 vs PC">
+            <Button fx:id="againstPc" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#play1vsPc" prefHeight="69.0" prefWidth="116.0" style="-fx-background-color: green; -fx-border-color: white;" text="1 vs PC">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="96.0" style="-fx-background-color: red; -fx-border-color: white;" text="Reset">
+            <Button fx:id="reset" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetclick" prefHeight="69.0" prefWidth="96.0" style="-fx-background-color: orange; -fx-border-color: white;" text="Reset">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="exit" layoutX="248.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitclick" prefHeight="69.0" prefWidth="96.0" style="-fx-background-color: red; -fx-border-color: white;" text="Exit">
                <font>
                   <Font size="24.0" />
                </font>
