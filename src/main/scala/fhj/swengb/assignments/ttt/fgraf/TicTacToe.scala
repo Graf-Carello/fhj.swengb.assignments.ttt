@@ -169,7 +169,7 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
     * The game is over if either of a player wins or there is a draw.
     */
   val gameOver: Boolean = {
-    if (moveHistory.size >= 9 || winner.isDefined) {
+    if (moveHistory.size >= 8 || winner != None) {
       true
     } else {
       false
@@ -233,14 +233,15 @@ case class TicTacToe(moveHistory: Map[TMove, Player],
 
   def winner: Option[(Player, Set[TMove])] = {
 
-    val movesPlayerA = moveHistory.filter(_ == PlayerA);
-    val movesPlayerB = moveHistory.filter(_ == PlayerB);
-    if (checkIfWon(movesPlayerA.map(_._1).toSet)) {
+    val movesPlayerA = moveHistory.filter(_._2 == PlayerA).keySet;
+    val movesPlayerB = moveHistory.filter(_._2 == PlayerB).keySet;
+
+    if (checkIfWon(movesPlayerA)) {
       println("PlayerA won!")
-      Some(PlayerA, movesPlayerA.map(_._1).toSet)
-    } else if (checkIfWon(movesPlayerB.map(_._1).toSet)) {
+      Some(PlayerA, movesPlayerA)
+    } else if (checkIfWon(movesPlayerB)) {
       println("PlayerB won!")
-      Some(PlayerB, movesPlayerB.map(_._1).toSet)
+      Some(PlayerB, movesPlayerB)
     } else {
       None
     }

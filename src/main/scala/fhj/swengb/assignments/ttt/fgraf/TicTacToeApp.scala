@@ -128,6 +128,20 @@ class TicTacToeAppController extends Initializable {
     else
       buttonClicked.setText("X")
 
+    if (currentgame.gameOver) {
+      println("Winner")
+    bt1.setDisable(true);
+    bt2.setDisable(true);
+    bt3.setDisable(true);
+    bt4.setDisable(true);
+    bt5.setDisable(true);
+    bt6.setDisable(true);
+    bt7.setDisable(true);
+    bt8.setDisable(true);
+    bt9.setDisable(true);
+
+  }
+
 
     val newgame = currentgame.turn(move, currentgame.nextPlayer)
     println(newgame.asString())
